@@ -8,6 +8,7 @@ namespace aco.tools.Algorithm.PSO
     /// <summary>
     /// 惯性权重运算策略
     /// </summary>
+    [Serializable]
     public class WeightStrategy
     {
         private PSOGlobal g;

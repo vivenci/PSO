@@ -8,6 +8,7 @@ namespace aco.tools.Algorithm.PSO
     /// <summary>
     /// 粒子类
     /// </summary>
+    [Serializable]
     public class Particle
     {
         private int foodNum;
@@ -24,7 +25,6 @@ namespace aco.tools.Algorithm.PSO
             this.foodNum = g.FoodNum;
             this.MaxVelocity = PSOGlobal.DefaultParticleMaxVelocity;
             this.Init();
-            //this.CheckFun = g.CheckFun;
         }
 
         public Particle(PSOGlobal g, double maxV) : this(g)

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace aco.tools.Algorithm.PSO
 {
+    [Serializable]
     public class PSOSolution
     {
         private PSOModel model;
@@ -41,6 +42,12 @@ namespace aco.tools.Algorithm.PSO
         {
             get;
             set;
+        }
+
+        public override string ToString()
+        {
+            string s = string.Format("在[{0}]处取得结果: {1}", string.Join(",", BestSolu.Select(p => p.ToString())), BestGoalValue);
+            return s;
         }
     }
 

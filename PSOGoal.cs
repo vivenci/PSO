@@ -11,6 +11,7 @@ namespace aco.tools.Algorithm.PSO
     /// 粒子群目标函数
     /// (用于判定粒子是否找到目标)
     /// </summary>
+    [Serializable]
     public class PSOGoal
     {
         /// <summary>

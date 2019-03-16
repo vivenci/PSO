@@ -8,6 +8,7 @@ namespace aco.tools.Algorithm.PSO
     /// <summary>
     /// 粒子运动模型
     /// </summary>
+    [Serializable]
     public class PSOMotion
     {
         private PSOGlobal g;
@@ -69,6 +70,7 @@ namespace aco.tools.Algorithm.PSO
         /// <param name="p">粒子状态</param>
         public Particle SearchFood(Particle p)
         {
+            var posDict = g.FixPositionDict;
             Particle npc = new Particle(this.g, p.MaxVelocity);
             double[] npArr = new double[g.FoodNum];
             double[] nvArr = new double[g.FoodNum];
@@ -84,15 +86,25 @@ namespace aco.tools.Algorithm.PSO
 
                 for (int i = 0; i < g.FoodNum; i++)
                 {
-                    double nv = GetNewVelocity(vs[i], p.BestPosition[i], g.GlobalBestPosition[i], p.Position[i], p.MaxVelocity);
-                    double np = GetNewPosition(p.Position[i], nv);
+                    if (posDict != null && posDict.ContainsKey(i))
+                    {
+                        nvArr[i] = 0;
+                        npArr[i] = posDict[i];
+                    }
+                    else
+                    {
+                        double nv = GetNewVelocity(vs[i], p.BestPosition[i], g.GlobalBestPosition[i], p.Position[i], p.MaxVelocity);
+                        double np = GetNewPosition(p.Position[i], nv);
 
-                    nvArr[i] = nv;
-                    npArr[i] = np;
+                        nvArr[i] = nv;
+                        npArr[i] = np;
+                    }
+
                 }
             }
             npc.Velocity = nvArr;
             npc.Position = npArr;
+
             return npc;
         }
 

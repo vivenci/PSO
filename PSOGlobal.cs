@@ -5,6 +5,7 @@ using System.Text;
 
 namespace aco.tools.Algorithm.PSO
 {
+    [Serializable]
     public class PSOGlobal
     {
         private readonly int DEFAULT_ITERATIONS = 2000;
@@ -133,6 +134,9 @@ namespace aco.tools.Algorithm.PSO
             }
         }
 
+        /// <summary>
+        /// 默认允许误差
+        /// </summary>
         public static double DefaultErr
         {
             get
@@ -158,49 +162,29 @@ namespace aco.tools.Algorithm.PSO
         /// <summary>
         /// 粒子的数量
         /// </summary>
-        public int ParticleNum
-        {
-            get;
-            set;
-        }
+        public int ParticleNum { get; set; }
 
         /// <summary>
         /// 搜索范围
         /// 各粒子的位置最大值
         /// </summary>
-        public double SearchRangeUpperLimit
-        {
-            get;
-            set;
-        }
+        public double SearchRangeUpperLimit { get; set; }
 
         /// <summary>
         /// 搜索范围
         /// 各粒子的位置最小值
         /// </summary>
-        public double SearchRangeLowerLimit
-        {
-            get;
-            set;
-        }
+        public double SearchRangeLowerLimit { get; set; }
 
         /// <summary>
         /// 惯性权重最大值
         /// </summary>
-        public double MaxWeight
-        {
-            get;
-            set;
-        }
+        public double MaxWeight { get; set; }
 
         /// <summary>
         /// 惯性权重最小值
         /// </summary>
-        public double MinWeight
-        {
-            get;
-            set;
-        }
+        public double MinWeight { get; set; }
 
         /// <summary>
         /// 最大迭代次数
@@ -215,21 +199,14 @@ namespace aco.tools.Algorithm.PSO
         /// <summary>
         /// 全局最优位置
         /// </summary>
-        public double[] GlobalBestPosition
-        {
-            get;
-            set;
-        }
+        public double[] GlobalBestPosition { get; set; }
 
         /// <summary>
-        /// 检测粒子位置是否越界的全局方法
-        /// (每个粒子可使用新方法替代该默认方法)
+        /// 用来描述固定食物位置状态的字典
+        /// [key]:固定食物的索引
+        /// [value]:固定食物的固定位置
         /// </summary>
-        //public Func<double[], object, bool> CheckFun
-        //{
-        //    get;
-        //    set;
-        //}
+        public Dictionary<int, double> FixPositionDict { get; set; }
 
     }
 
